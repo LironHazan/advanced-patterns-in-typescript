@@ -1,7 +1,6 @@
-export interface Ctr<T> { new(...args: any[]): T; }
+import {Ctr} from "../../../common/types";
 
 type ClazzDecorator<T> = (target: T) => void;
-
 
 export const Injectable = () : ClazzDecorator<Ctr<any>> => {
     return (target: Ctr<any>) => {
