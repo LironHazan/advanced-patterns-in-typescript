@@ -1,20 +1,21 @@
 
-class MyTypedFunctor {
+class MyFunctorContext {
 
-    items: any[];
+    private items: any[];
 
     constructor(items: any) {
         this.items = items
     }
 
-    map(transformFn: (arg: any) => any ): MyTypedFunctor {
+    map(transformFn: (arg: any) => any ): MyFunctorContext {
         const newItems = [];
 
         for (const item of this.items) {
             newItems.push(transformFn(item));
         }
-        // Wrap the transformed list in a new functor ref
-        return new MyTypedFunctor(newItems);
+        // Wrap the transformed list
+        this.items = newItems;
+        return this;
     }
 }
 
@@ -25,7 +26,7 @@ const bananas = [
     {isYellow: false}
     ];
 
-const myTypedFunctor = new MyTypedFunctor(bananas);
+const myTypedFunctor = new MyFunctorContext(bananas);
 
 const bestBananas = myTypedFunctor
     .map((banana: any) => ({
