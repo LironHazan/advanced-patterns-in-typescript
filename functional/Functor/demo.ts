@@ -13,11 +13,16 @@ class MyFunctorContext {
         for (const item of this.items) {
             newItems.push(transformFn(item));
         }
-        // Wrap the transformed list
-        this.items = newItems;
-        return this;
+
+        //following could work as well
+        //this.items = newItems;
+        //return this;
+
+        return new MyFunctorContext(newItems);
     }
 }
+
+
 
 const bananas = [
     {isYellow: true},
@@ -25,6 +30,7 @@ const bananas = [
     {isYellow: true},
     {isYellow: false}
     ];
+
 
 const myTypedFunctor = new MyFunctorContext(bananas);
 
