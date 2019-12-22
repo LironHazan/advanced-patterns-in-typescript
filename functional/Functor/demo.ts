@@ -1,22 +1,17 @@
+class MyFunctorContext<T> {
 
-class MyFunctorContext {
+    items: T[];
 
-    private items: any[];
-
-    constructor(items: any) {
+    constructor (items: T[]) {
         this.items = items
     }
 
-    map(transformFn: (arg: any) => any ): MyFunctorContext {
+    map(transformFn: <T, V> (arg: T) => V ): MyFunctorContext<T> {
         const newItems = [];
 
         for (const item of this.items) {
             newItems.push(transformFn(item));
         }
-
-        //following could work as well
-        //this.items = newItems;
-        //return this;
 
         return new MyFunctorContext(newItems);
     }
@@ -24,7 +19,7 @@ class MyFunctorContext {
 
 
 
-const bananas = [
+const bananas: any = [
     {isYellow: true},
     {isYellow: false},
     {isYellow: true},
@@ -35,9 +30,6 @@ const bananas = [
 const myTypedFunctor = new MyFunctorContext(bananas);
 
 const bestBananas = myTypedFunctor
-    .map((banana: any) => ({
-    isYellow: banana.isYellow,
-    hasMagnesium: true}))
     .map((banana: any) => {
     if (banana.isYellow) {
         banana.tasty = true;
