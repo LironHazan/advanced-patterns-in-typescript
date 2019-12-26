@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import {Ctr} from './injectable';
+import {Ctr} from "../../../common/types";
 
 export class Injector {
 

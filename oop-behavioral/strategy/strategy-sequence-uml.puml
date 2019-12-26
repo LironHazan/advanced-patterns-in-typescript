@@ -1,0 +1,7 @@
+@startuml
+Context -> Strategy1: algorithm();
+Context <-- Strategy1: return result
+
+Context -> Strategy2: algorithm();
+Context <-- Strategy2: return result
+@enduml
