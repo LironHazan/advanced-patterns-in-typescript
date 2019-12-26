@@ -16,6 +16,8 @@ class MyFunctorContext<T> {
         return new MyFunctorContext(newItems);
     }
 }
+// In Haskell btw: instance Functor Context where
+//     fmap f (Context a) = Context (f a)
 
 
 
