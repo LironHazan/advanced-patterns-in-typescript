@@ -5,8 +5,9 @@ Goal:
 - Code references for personal blog (Liron Hazan @medium).
 
 Content to cover:
-- DI with decorators (Metaprogramming). digging into inversifyJS. 
-- Gof design patterns (mainly behavioral) implementations/examples.
-- Functional DP implementations (functors and monads).
+- DI with decorators (Metaprogramming). 
+- Review the strategy and mixin highly useful Gof behavioral implementations.
+- Functional DP implementations (list function and a ts light Promise).
 - Compiler tricks.
+- Type system concepts.
 
