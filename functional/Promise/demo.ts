@@ -13,7 +13,22 @@ enum states {
     rejected = 'rejected'
 }
 
-class MyPromise implements Thenable {
+// Explanation:
+// The Promise is an elegant functional wrapper
+
+// How it works: (tried to simplify)
+
+// 1. User passes the exec function to the constructor - that will be invoked immediately on construction
+// 2. The exec function accepts 2 args which are callback functions ref of the Promise
+// 3. The user runs the resolve fn on success or the reject on error.
+// 4. Promise has a state machine - on construction it marked as "pending"
+// 5. When we use the Promise by calling "then" and passing our callback the Promise will store that callback in a callbacks list
+// 5. The user code runs, operates an async task and by the end of it the user will calls resolve (or error on failure)
+// 6. Once resolved -
+//  // a. The Promise state will be marked as "resolved"
+//  // b. The callback that was passed to the promisifiedOperation.then(cb) will then be executed
+
+export class MyPromise implements Thenable {
     private status: 'pending' | 'resolved' | 'rejected';
     readonly thenCallbacks: Function[];
     private catchCallback: Function = () => {};
@@ -24,8 +39,7 @@ class MyPromise implements Thenable {
     constructor(executor: Executor) {
         this.thenCallbacks = [];
         this.status = states.pending;
-        executor((arg: any) => this.resolve(arg),
-            (err: Error) => this.reject(err));
+        executor((arg: any) => this.resolve(arg), (err: Error) => this.reject(err));
     }
 
     then(callback: Function): MyPromise {
