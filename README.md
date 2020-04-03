@@ -1,13 +1,13 @@
 #Advanced patterns in Typescript:
 
-Goal:
-- Building material for Advanced TS course.
-- Code references for personal blog (Liron Hazan @medium).
+This repo was originaly started as a collection of code references for personal blog (Liron Hazan @medium)[https://medium.com/@lironhazan].
 
-Content to cover:
+Your'e welcome to review the issues and open PR's with your examples :)
+
+Content:
 - DI with decorators (Metaprogramming). 
-- Review the strategy and mixin highly useful Gof behavioral implementations.
-- Functional DP implementations (list function and a ts light Promise).
+- Type system concepts
+- Useful Gof DP (mainly behavioral).
+- Functional patterns (list function and a ts light Promise).
 - Compiler tricks.
-- Type system concepts.
 
