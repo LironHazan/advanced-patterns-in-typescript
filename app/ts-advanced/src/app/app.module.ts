@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {DiUiComponent} from "./di/di-ui/di-ui.component";
+import { TsCanvasAnimComponent } from './components/ts-canvas-anim/ts-canvas-anim.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DiUiComponent
+    DiUiComponent,
+    TsCanvasAnimComponent
   ],
   imports: [
     BrowserModule,
