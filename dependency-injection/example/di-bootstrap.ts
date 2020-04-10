@@ -8,10 +8,10 @@ class DiBootstrap {
 
         // Static injector
         // const renderer = Injector.resolve<RendererService>(RendererService);
-        // renderer.update();
+        // renderer.draw();
 
-        const renderer = Resolver.resolve<RendererService>(RendererService);
-        renderer.update();
+        const renderer: RendererService = Resolver.resolve<RendererService>(RendererService);
+        renderer.draw();
 
         console.log('---------------- | END | -----------------');
     }

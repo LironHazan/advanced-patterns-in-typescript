@@ -10,7 +10,7 @@ export class RendererService {
         console.log('init RendererService');
     }
 
-    update() {
+    draw() {
         this.drawer.drawShape('line');
         this.drawer.paint();
         console.log('updating drawing');
