@@ -11,3 +11,5 @@ Content:
 - Functional patterns (list function and a ts light Promise).
 - Compiler tricks.
 
+In order to run each demo:  
+`ts-node ./folder/*/demo.ts`
