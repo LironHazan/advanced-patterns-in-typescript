@@ -1,6 +1,7 @@
-#Advanced patterns in Typescript:
 
-This repo was originaly started as a collection of code references/concepts for my personal blogs
+## Advanced patterns in Typescript:
+
+Following repo was originaly started as a collection of code references/concepts for my personal blogs
 
 [Liron Hazan @medium](https://medium.com/@lironhazan)
 
