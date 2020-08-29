@@ -1,19 +1,19 @@
 import { add, BinOp } from './foldl';
 
 interface Monoid<T> {
-    id: () => T; // empty
-    combine: BinOp //fold/concat etc..
+    empty: () => T;
+    combine: BinOp
 }
 
 function getSumMonoid(): Monoid<number> {
     return {
-        id: () => 0,
+        empty: () => 0,
         combine: add
     }
 }
 
 const sumMonoid = getSumMonoid();
-console.log(sumMonoid.id());
+console.log(sumMonoid.empty());
 // 0
 
 console.log(sumMonoid.combine(6, 2));

@@ -19,3 +19,7 @@ Content:
 
 In order to run each demo:  
 `ts-node ./folder/*/demo.ts`
+
+OR
+
+`tsc filename.ts && node filename.js`
