@@ -1,3 +1,7 @@
+//  the Monoid typeclass is a class for types which have a single most natural operation for combining values,
+//  together with a value which doesn't do anything when you combine it with others (this is called the identity element).
+// https://wiki.haskell.org/Monoid
+
 import { add } from './foldl';
 
 interface Monoid<T> {
