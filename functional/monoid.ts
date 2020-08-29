@@ -1,8 +1,8 @@
-import { add, BinOp } from './foldl';
+import { add } from './foldl';
 
 interface Monoid<T> {
     empty: () => T;
-    combine: BinOp
+    combine: (a: T, b: T) => T
 }
 
 function getSumMonoid(): Monoid<number> {
