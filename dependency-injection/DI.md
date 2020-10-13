@@ -13,3 +13,4 @@
       `"experimentalDecorators": true,        
       "emitDecoratorMetadata": true`
 
+Related [Blog post](https://medium.com/@Sentinelone_tech/dependency-injection-in-typescript-from-scratch-d1a4422043a0) was published to the sentinelOne tech publication
