@@ -1,3 +1,10 @@
+// simple conditional typing
+
+type Head<T extends any[]> = T extends [any, ...any[]] ? T[0] : never;
+type testH = Head<[1, 2, 3, 4]>;
+const one: testH = 1; // valid
+const two: testH = 2; // Type '2' is not assignable to type '1'
+
 interface BarModel {
   tag: string;
   index: number;
