@@ -1,4 +1,5 @@
 import { Project } from 'ts-morph';
+import { config } from '../../private/config';
 
 export async function injectDummyProfiler(filePath: string, className: string, methodName: string) {
   const project = new Project();
@@ -13,8 +14,4 @@ export async function injectDummyProfiler(filePath: string, className: string, m
   await project.save();
 }
 
-injectDummyProfiler(
-  '/Users/lironh/dev-liron/advanced-patterns-in-typescript/tsc-fun/code-mod-with_ts-morph/modify-me.ts',
-  'Runner',
-  'run'
-).then((_) => console.log('done'));
+injectDummyProfiler(config.filepath, 'Runner', 'run').then((_) => console.log('done'));

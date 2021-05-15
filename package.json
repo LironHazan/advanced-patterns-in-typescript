@@ -21,10 +21,11 @@
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "ts-node": "^9.1.1",
-    "typescript": "^4"
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13",
-    "ts-morph": "^10.0.2"
+    "ts-morph": "^10.0.2",
+    "ts-toolbelt": "^9.6.0"
   }
 }
