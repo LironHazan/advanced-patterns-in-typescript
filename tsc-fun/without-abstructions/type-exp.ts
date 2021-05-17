@@ -1,14 +1,14 @@
 import * as ts from 'typescript';
 
 const source = `
-  const two = 2;
-  const four = 4;
+  const sixsixsix = 666;
 `;
 
-function numberTransformer<T extends ts.Node>(): ts.TransformerFactory<T> {
+function numToStringTransformer<T extends ts.Node>(): ts.TransformerFactory<T> {
   return (context) => {
     const visit: ts.Visitor = (node) => {
       if (ts.isNumericLiteral(node)) {
+        // check why is it deprecaated
         return ts.createStringLiteral(node.text);
       }
       return ts.visitEachChild(node, (child) => visit(child), context);
@@ -19,8 +19,8 @@ function numberTransformer<T extends ts.Node>(): ts.TransformerFactory<T> {
 }
 
 let result = ts.transpileModule(source, {
-  compilerOptions: { module: ts.ModuleKind.CommonJS },
-  transformers: { before: [numberTransformer()] },
+  compilerOptions: { module: ts.ModuleKind.ESNext },
+  transformers: { before: [numToStringTransformer()] },
 });
 
 console.log(result.outputText);
