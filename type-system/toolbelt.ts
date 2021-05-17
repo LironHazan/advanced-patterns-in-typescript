@@ -1,16 +1,8 @@
-import { Equals } from 'ts-toolbelt/out/Any/Equals';
+// great post by the author of toolbelt
+// https://medium.com/free-code-camp/typescript-curry-ramda-types-f747e99744ab
 
-interface FooModel {
-  tag: string;
-  index: number;
-  parent: FooModel;
-}
+import { Tail } from 'ts-toolbelt/out/List/Tail';
+type EvenNum = [2, 4, 6, 8];
 
-type ErrType = 'type1' | 'type2' | 'type3';
-
-interface ErrModel {
-  type: ErrType;
-  msg: string;
-}
-
-type EQFoo<T extends FooModel> = Equals<FooModel, T>;
+const tail: Tail<EvenNum> = [4, 6, 8];
+const nontail: Tail<EvenNum> = [4, 6]; //type err
