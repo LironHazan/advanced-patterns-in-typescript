@@ -1,4 +1,4 @@
-import Parsimmon, { whitespace } from 'parsimmon';
+import Parsimmon from 'parsimmon';
 const P = Parsimmon;
 
 let MyFooQueryLang = P.createLanguage({
@@ -26,7 +26,6 @@ let MyFooQueryLang = P.createLanguage({
 });
 
 let textWithSpaces = `foo == "hey there" && foo == "eatPizza"`;
-let text = `foo=="hey there"`;
 
 function prettyPrint(x: any) {
   let opts = { depth: null, colors: 'auto' };
