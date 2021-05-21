@@ -4,10 +4,8 @@ export type Result<E, T> = Error<E> | Just<T>;
 type Just<T> = T;
 type Error<E> = Just<E>; //LOL :)
 
-type ANY = any;
-
 export class ResultT<E, T> {
-  private readonly result: Result<ErrorClassification, T>;
+  private result: Result<ErrorClassification, T>;
 
   constructor(result: Result<ErrorClassification, T>) {
     this.result = result;
@@ -17,7 +15,7 @@ export class ResultT<E, T> {
    * Result mapper
    * @param onSuccessFn
    */
-  ok(onSuccessFn: (lifted: T) => ResultT<E, T>): ANY | ResultT<E, T> {
+  ok(onSuccessFn: (lifted: T) => ResultT<E, T>): ResultT<E, T> {
     return isError(this.result) ? this : onSuccessFn(this.result as T);
   }
 
@@ -25,8 +23,13 @@ export class ResultT<E, T> {
    * Error mapper
    * @param onFailureFn
    */
-  err(onFailureFn: (error: ErrorClassification) => ResultT<E, T>): ANY | ResultT<E, T> {
+  err(onFailureFn: (error: ErrorClassification) => ResultT<E, T>): ResultT<E, T> {
     return isError(this.result) ? onFailureFn(this.result as ErrorClassification) : this;
+  }
+
+  map<A>(transformFn: (a: T) => A): ResultT<never, T> {
+    this.result = transformFn(this.result as T) as any;
+    return this;
   }
 }
 
@@ -66,4 +69,17 @@ mockedErr
   .err((transformedErr: ErrorClassification) => {
     console.log(transformedErr.message);
     return mockedErr;
-  });
+  })
+  .map(console.log);
+
+const result = new ResultT({ a: 'foo', b: 'bar' });
+result
+  .ok((res) => {
+    res.a = 'not foo';
+    return result;
+  })
+  .map((res: { a: any }) => ({
+    a: res.a,
+    c: 'mako',
+  }))
+  .map(console.log);
