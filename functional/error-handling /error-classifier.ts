@@ -13,16 +13,12 @@ export class ResultT<E, T> {
     this.result = result;
   }
 
-  noop(): ResultT<E, T> {
-    return this;
-  }
-
   /**
    * Result mapper
    * @param onSuccessFn
    */
   ok(onSuccessFn: (lifted: T) => ResultT<E, T>): ANY | ResultT<E, T> {
-    return isError(this.result) ? this.noop() : onSuccessFn(this.result as T);
+    return isError(this.result) ? this : onSuccessFn(this.result as T);
   }
 
   /**
@@ -30,7 +26,7 @@ export class ResultT<E, T> {
    * @param onFailureFn
    */
   err(onFailureFn: (error: ErrorClassification) => ResultT<E, T>): ANY | ResultT<E, T> {
-    return isError(this.result) ? onFailureFn(this.result as ErrorClassification) : this.noop();
+    return isError(this.result) ? onFailureFn(this.result as ErrorClassification) : this;
   }
 }
 
