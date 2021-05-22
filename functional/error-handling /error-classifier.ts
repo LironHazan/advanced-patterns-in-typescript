@@ -66,13 +66,10 @@ mockedErr
     err.message = 'transformed err message';
     return mockedErr;
   })
-  .err((transformedErr: ErrorClassification) => {
-    console.log(transformedErr.message);
-    return mockedErr;
-  })
   .map(console.log);
 
 const result = new ResultT({ a: 'foo', b: 'bar' });
+
 result
   .ok((res) => {
     res.a = 'not foo';
@@ -83,3 +80,27 @@ result
     c: 'mako',
   }))
   .map(console.log);
+
+// Closer look into map:
+// Identity: object.map(x => x) ≍ object
+const isInstanceofResultT = result.map((a) => a) instanceof ResultT;
+console.log('isInstanceofResultT', isInstanceofResultT);
+
+function one(s: string) {
+  const one = 'one';
+  return one + s;
+}
+function two(s: string) {
+  const two = 'two';
+  return two + s;
+}
+
+// composition: object.map(compose(f, g)) ≍ object.map(g).map(f)
+const fooBox = new ResultT('foo');
+const isResultT =
+  fooBox.map(() => two(one('foo'))).map(console.log) ===
+  fooBox
+    .map(() => one('foo'))
+    .map(two)
+    .map(console.log);
+console.log('isResultT', isResultT);

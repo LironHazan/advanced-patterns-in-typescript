@@ -1,13 +1,13 @@
 ## Advanced patterns in Typescript
 
-Following repo was originaly started as a collection of code references/concepts for my personal blogs.
+Following repo was started as a collection of code references/concepts for my personal blogs.
 
 [Liron Hazan @medium](https://medium.com/@lironhazan)
 
 [Type thinking @devto](https://dev.to/lironn_h/type-thinking-p1-types-3j94)
 
 
-Your'e welcome to fork and open PR's with your educative awesome examples :)
+You're more than welcome to fork and open PR's with your educative awesome examples :)
 
 Content:
 - DI with decorators (Metaprogramming). 
@@ -16,6 +16,7 @@ Content:
 - Functional concepts.
 - Compiler tricks.
 - Parsers 
+- Any paradigm for writing better software
 
 
 
