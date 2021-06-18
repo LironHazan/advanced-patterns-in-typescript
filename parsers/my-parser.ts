@@ -3,8 +3,9 @@ const P = Parsimmon;
 
 let MyFooQueryLang = P.createLanguage({
   // `r` eq rules.
+  dummy_query: (r) => r.expression.many(),
+
   expression: (r) => P.alt(r.base, r.sub),
-  query: (r) => r.expression.many(),
 
   base: (r) => P.seq(r.field, r.operator, r.value),
   sub: (r) => P.seq(P.alt(r.and, r.or), r.base),
@@ -25,12 +26,6 @@ let MyFooQueryLang = P.createLanguage({
       .desc('value'),
 });
 
-let textWithSpaces = `foo == "hey there" && foo == "eatPizza"`;
-
-function prettyPrint(x: any) {
-  let opts = { depth: null, colors: 'auto' };
-  console.log(x, opts);
+export function parseDummyQL<T>(query: string): T {
+  return MyFooQueryLang.dummy_query.tryParse(query);
 }
-
-let ast = MyFooQueryLang.query.tryParse(textWithSpaces);
-prettyPrint(ast);
