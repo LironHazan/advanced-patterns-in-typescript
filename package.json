@@ -29,6 +29,7 @@
     "parsimmon": "^1.17.0",
     "reflect-metadata": "^0.1.13",
     "ts-morph": "^10.0.2",
-    "ts-toolbelt": "^9.6.0"
+    "ts-toolbelt": "^9.6.0",
+    "@swc/core": "^1.2.197"
   }
 }
